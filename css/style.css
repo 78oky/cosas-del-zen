@@ -9,7 +9,7 @@ body {
 /* ===== Header / Slider ===== */
 .header {
   position: relative;
-  height: 70vh;
+  height: 90vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -237,5 +237,6 @@ body {
   }
 
 }
+
 
 
