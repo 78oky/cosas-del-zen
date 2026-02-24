@@ -187,27 +187,59 @@ body {
 
 }
 /* ===== Header / Slider adaptativo ===== */
+/* ===== Header / Slider estable y responsive ===== */
 .header {
-  height: auto;         /* se adapta al contenido */
-  max-height: 60vh;     /* opcional, evita que sea gigante en escritorio */
+  position: relative;
+  height: 60vh;         /* altura fija en escritorio */
+  max-height: 60vh;     /* límite de altura */
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;         /* se ajusta al contenido */
-  max-height: 60vh;     /* límite de altura */
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover;     /* mantiene proporción y recorta */
+  opacity: 0;
+  animation: fade 56s infinite;
 }
 
-/* ===== Reglas para móviles ===== */
+/* ===== Animación por imagen (8 imágenes) ===== */
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 7s; }
+.slideshow img:nth-child(3) { animation-delay: 14s; }
+.slideshow img:nth-child(4) { animation-delay: 21s; }
+.slideshow img:nth-child(5) { animation-delay: 28s; }
+.slideshow img:nth-child(6) { animation-delay: 35s; }
+.slideshow img:nth-child(7) { animation-delay: 42s; }
+.slideshow img:nth-child(8) { animation-delay: 49s; }
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  7%   { opacity: 1; }
+  21%  { opacity: 1; }
+  28%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ===== Contenido encima del slider ===== */
+.header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== Media Queries para móviles ===== */
 @media (max-width: 768px) {
   .header {
-    max-height: 35vh;
-  }
-
-  .slideshow img {
-    max-height: 35vh;
+    height: 35vh;       /* reduce altura en móviles */
   }
 
   /* Opcional: mostrar solo las primeras 2 imágenes del slider */
